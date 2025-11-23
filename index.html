@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TouchSkyTrader - Forex Lot Size Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind CSS configuration for custom colors
+      tailwind.config = {
+        darkMode: 'class', // Enable dark mode
+        theme: {
+          extend: {
+            colors: {
+              'tst-blue': '#007bff', // TouchSkyTrader primary blue
+              'tst-dark-blue': '#0056b3', // Darker blue for hover/active states
+              'tst-black': '#1a1a1a', // Custom dark background
+              'tst-white': '#f8f8f8', // Custom light background/text
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+<body class="bg-tst-white dark:bg-tst-black text-tst-black dark:text-tst-white transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

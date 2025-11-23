@@ -1,0 +1,5 @@
+{
+  "name": "TouchSkyTrader - Forex Lot Size Calculator",
+  "description": "A simple, accurate, and user-friendly Forex Lot Size Calculator that helps traders calculate the correct lot size based on account size, leverage, risk, currency pair, entry price, and stop loss price.",
+  "requestFramePermissions": []
+}
