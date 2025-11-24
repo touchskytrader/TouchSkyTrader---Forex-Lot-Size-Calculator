@@ -6,7 +6,7 @@ import {
   Leverage,
   TradeType, // Import TradeType
 } from '../types';
-import { MOCK_EXCHANGE_RATES, getPairPipMultiplier } from '../constants'; // Import getPairPipMultiplier
+import { MOCK_EXCHANGE_RATES, getPairPipMultiplier, MOCK_MARKET_PRICES } from '../constants'; // Import getPairPipMultiplier and MOCK_MARKET_PRICES
 
 /**
  * Helper to get the exchange rate from a currency to USD.
@@ -134,6 +134,19 @@ function calculateMarginRequired(
 
   const marginInUSD = totalPositionValueInUSD / leverageRatio;
   return convertCurrency(marginInUSD, 'USD', accountCurrency);
+}
+
+/**
+ * Simulates fetching a market price for a given currency pair.
+ * @param symbol The symbol of the currency pair (e.g., 'EUR/USD').
+ * @returns A promise that resolves with the mock market price.
+ */
+export async function fetchMarketPrice(symbol: string): Promise<number | undefined> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(MOCK_MARKET_PRICES[symbol]);
+    }, 500); // Simulate network delay
+  });
 }
 
 /**

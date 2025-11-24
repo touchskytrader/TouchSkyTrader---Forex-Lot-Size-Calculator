@@ -21,6 +21,48 @@ export const MOCK_EXCHANGE_RATES: { [key: string]: number } = {
   // When base is XAU, XAG, BTC, ETH, we rely on entryPrice for USD conversion primarily.
 };
 
+// --- Mock Market Prices for Auto-fill ---
+export const MOCK_MARKET_PRICES: { [symbol: string]: number } = {
+  'EUR/USD': 1.0700,
+  'GBP/USD': 1.2500,
+  'USD/JPY': 156.00,
+  'USD/CHF': 0.9100,
+  'AUD/USD': 0.6650,
+  'USD/CAD': 1.3650,
+  'NZD/USD': 0.6150,
+  'EUR/GBP': 0.8500,
+  'EUR/JPY': 168.00,
+  'GBP/JPY': 195.00,
+  'AUD/JPY': 104.00,
+  'CHF/JPY': 171.50,
+  'EUR/CAD': 1.4800,
+  'GBP/CAD': 1.7100,
+  'AUD/CAD': 0.9000,
+  'AUD/CHF': 0.6000,
+  'AUD/NZD': 1.0850,
+  'EURAUD': 1.6100,
+  'EURNZD': 1.7500,
+  'GBPAUD': 1.9100,
+  'GBPCAD': 1.7250,
+  'GBPCHF': 1.1300,
+  'GBPNZD': 2.0800,
+  'NZDCAD': 0.8350,
+  'NZDJPY': 95.50,
+  'NZDCHF': 0.5500,
+  'CADJPY': 114.00,
+  'CHFJPY': 171.50,
+  'EURCHF': 0.9800,
+  'CADCHF': 0.6650,
+  'XAU/USD': 2350.00, // Gold
+  'XAG/USD': 30.00,   // Silver
+  'XCU/USD': 4.50,    // Copper
+  'NAS100/USD': 18800.00, // Nasdaq 100
+  'US30/USD': 39000.00,   // Dow Jones 30
+  'BTC/USDT': 68000.00,  // Bitcoin
+  'ETH/USD': 3500.00,   // Ethereum
+};
+
+
 // --- Account Currencies ---
 export const ACCOUNT_CURRENCIES: Option<AccountCurrency>[] = [
   { value: 'USD', label: 'USD' },
@@ -48,14 +90,14 @@ export const TRADE_TYPES: Option<TradeType>[] = [
 /**
  * Dynamically determines the pip multiplier based on the currency pair symbol.
  * This logic is based on the provided PRD:
- * - 0.01 for Gold (XAUUSD), Silver (XAGUSD), and Indices (NAS100, US30).
+ * - 0.10 for Gold (XAUUSD), Silver (XAGUSD), and Indices (NAS100, US30).
  * - 0.0001 for all other Major & Minor Forex Pairs.
  * @param symbol The symbol of the currency pair (e.g., 'XAU/USD', 'EUR/USD').
  * @returns The pip multiplier for the given symbol.
  */
 export function getPairPipMultiplier(symbol: string): number {
   if (symbol.includes("XAU") || symbol.includes("XAG") || symbol.includes("NAS100") || symbol.includes("US30")) {
-    return 0.01;
+    return 0.10;
   } else {
     return 0.0001;
   }

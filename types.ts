@@ -2,7 +2,6 @@ export interface CurrencyPair {
   symbol: string;
   base: string;
   quote: string;
-  // pipMultiplier: number; // e.g., 0.0001 for most pairs, 0.01 for JPY pairs, 0.01 for XAUUSD (assuming $0.01 per unit movement) - REMOVED
   contractSize: number; // Units per standard lot (e.g., 100,000 for FX, 100 for XAUUSD, 1 for BTCUSDT)
 }
 
@@ -35,6 +34,28 @@ export interface CalculationResults {
   riskToRewardRatio: number | null;
   lotSizeCategory: 'standard' | 'mini' | 'micro';
   effectiveRiskPercentage: number; // Actual risk percentage based on final lot size
+}
+
+export interface HistoryEntry {
+  id: string; // Unique ID for each entry
+  timestamp: string; // Date/time of calculation
+  inputs: {
+    accountCurrency: AccountCurrency;
+    accountSize: number | '';
+    leverage: Leverage;
+    riskType: RiskType;
+    riskValue: number | '';
+    currencyPair: CurrencyPair;
+    tradeType: TradeType;
+    entryPrice: number | '';
+    stopLossPriceInput: number | '';
+    stopLossPipsInput: number | '';
+    takeProfitPriceInput: number | '';
+    takeProfitPipsInput: number | '';
+    lastEditedSLField: 'price' | 'pips' | null;
+    lastEditedTPField: 'price' | 'pips' | null;
+  };
+  results: CalculationResults | null; // Store the calculated results
 }
 
 export enum RiskLevel {
